@@ -7,7 +7,10 @@ import './index.less';
 class Hello extends React.PureComponent {
 
   render() {
-    return <div><input /><h1 className="testStyle">Hello,44113444!</h1></div>;
+    return <div>
+      <input />
+      <h1 className="testStyle">Hello,我是余方，4444我叫余方方2222，123我今年27岁!</h1>
+    </div>;
   }
 
 }

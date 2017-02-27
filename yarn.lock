@@ -1011,9 +1011,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-better-npm-run@^0.0.14:
+better-npm-run@0.0.14:
   version "0.0.14"
-  resolved "http://registry.npm.taobao.org/better-npm-run/download/better-npm-run-0.0.14.tgz#6a03b1a19db63205142d7803995f23c779070389"
+  resolved "http://r.cnpmjs.org/better-npm-run/download/better-npm-run-0.0.14.tgz#6a03b1a19db63205142d7803995f23c779070389"
   dependencies:
     dotenv "^2.0.0"
     object-assign "^4.0.1"
