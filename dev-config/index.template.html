@@ -17,7 +17,10 @@
 
 <body>
     <div id="root"></div>
-    <script src="vendor.dll.js"></script> 
+    <% if (htmlWebpackPlugin.options.favIcon && htmlWebpackPlugin.options.favIcon.length > 0) { %>
+        <link rel="shorticon icon" type="image/x-icon" href="<%= htmlWebpackPlugin.options.favIcon %>">
+        <% } %>
+            <script src="vendor.dll.js"></script>
 </body>
 
 </html>
