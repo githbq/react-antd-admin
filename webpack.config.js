@@ -107,6 +107,13 @@
      },
 
      plugins: [
+         new webpack.DllReferencePlugin({
+             context: '.',
+             /**
+              * 在这里引入 manifest 文件
+              */
+             manifest: require('./dist/vendor-manifest.json')
+         }),
          new webpack.BannerPlugin('This file is created by jxy'), // 生成文件时加上注释
          new webpack.DefinePlugin({
              'process.env.NODE_ENV': JSON.stringify('development'),
@@ -114,7 +121,8 @@
          }),
          // 生成html文件
          new HtmlWebpackPlugin({
-             template: 'index.html.template',
+             filename: 'index.html',
+             template: 'index.template.html',
              title: globalConfig.name,
 
              // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性

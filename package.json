@@ -1,79 +1,91 @@
 {
-  "name": "react-antd-admin",
-  "version": "1.0.0",
-  "description": "React Admin Boilerplate, with React + Ant Design",
-  "author": "jiangxy <foolbeargm@gmail.com>",
-  "license": "Apache-2.0",
-  "engines": {
-    "node": ">=5.0 <7",
-    "npm": ">=3.3 <4"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jiangxy/react-antd-admin.git"
-  },
-  "keywords": [
-    "ant",
-    "react",
-    "admin",
-    "frontend"
-  ],
-  "devDependencies": {
-    "antd": "2.7.1",
-    "babel-core": "^6.21.0",
-    "babel-eslint": "6.0.0",
-    "babel-loader": "^6.2.10",
-    "babel-plugin-import": "1.1.0",
-    "babel-polyfill": "^6.20.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
-    "better-npm-run": "^0.0.14",
-    "compression-webpack-plugin": "0.3.2",
-    "cross-env": "3.1.4",
-    "css-loader": "0.23.1",
-    "eslint": "2.7.0",
-    "eslint-config-airbnb": "6.x",
-    "eslint-plugin-react": "4.x",
-    "extract-text-webpack-plugin": "^2.0.0",
-    "file-loader": "0.9.0",
-    "html-webpack-plugin": "2.28.0",
-    "less": "2.7.1",
-    "less-loader": "2.2.3",
-    "react": "15.3.0",
-    "react-dom": "15.3.0",
-    "react-hot-loader": "^1.3.1",
-    "react-redux": "4.4.0",
-    "react-router": "3.0.0",
-    "redux": "3.6.0",
-    "redux-logger": "2.7.4",
-    "redux-thunk": "2.1.0",
-    "rimraf": "^2.6.1",
-    "strip-loader": "0.1.2",
-    "style-loader": "0.13.1",
-    "url-loader": "0.5.7",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
-  },
-  "dependencies": {
-    "all": "^0.0.0",
-    "superagent": "2.0.0"
-  },
-  "scripts": {
-    "dev": "better-npm-run dev",
-    "build": "better-npm-run build",
-    "clean": "rimraf \"./dist\"",
-    "eslint": "eslint --ext .js,.jsx src"
-  },
-  "betterScripts": {
-    "dev": {
-      "command": "\"./node_modules/.bin/webpack-dev-server\" --config webpack.config.js --open --port 9876 --devtool eval --progress --colors --content-base dist --hot"
+    "name": "react-antd-admin",
+    "version": "1.0.0",
+    "description": "React Admin Boilerplate, with React + Ant Design",
+    "author": "jiangxy <foolbeargm@gmail.com>",
+    "license": "Apache-2.0",
+    "engines": {
+        "node": ">=5.0 <7",
+        "npm": ">=3.3 <4"
     },
-    "build": {
-      "command": "better-npm-run rm && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
-      "env": {
-        "NODE_ENV": "production"
-      }
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:jiangxy/react-antd-admin.git"
+    },
+    "keywords": [
+        "ant",
+        "react",
+        "admin",
+        "frontend"
+    ],
+    "devDependencies": {
+        "antd": "2.7.1",
+        "babel-core": "^6.21.0",
+        "babel-eslint": "6.0.0",
+        "babel-loader": "^6.2.10",
+        "babel-plugin-import": "1.1.0",
+        "babel-polyfill": "^6.20.0",
+        "babel-preset-latest": "^6.16.0",
+        "babel-preset-react": "^6.16.0",
+        "babel-preset-stage-0": "^6.16.0",
+        "better-npm-run": "^0.0.14",
+        "compression-webpack-plugin": "0.3.2",
+        "cross-env": "3.1.4",
+        "css-loader": "0.23.1",
+        "eslint": "2.7.0",
+        "eslint-config-airbnb": "6.x",
+        "eslint-plugin-react": "4.x",
+        "extract-text-webpack-plugin": "^2.0.0",
+        "file-loader": "0.9.0",
+        "html-webpack-plugin": "2.28.0",
+        "less": "2.7.1",
+        "less-loader": "2.2.3",
+        "react": "15.3.0",
+        "react-dom": "15.3.0",
+        "react-hot-loader": "^1.3.1",
+        "react-redux": "4.4.0",
+        "react-router": "3.0.0",
+        "redux": "3.6.0",
+        "redux-logger": "2.7.4",
+        "redux-thunk": "2.1.0",
+        "rimraf": "^2.6.1",
+        "strip-loader": "0.1.2",
+        "style-loader": "0.13.1",
+        "url-loader": "0.5.7",
+        "webpack": "^2.2.1",
+        "webpack-dev-server": "^2.4.1"
+    },
+    "dependencies": {
+        "all": "^0.0.0",
+        "superagent": "2.0.0",
+        "underscore": "^1.8.3"
+    },
+    "scripts": {
+        "dev": "better-npm-run dev",
+        "build": "better-npm-run build",
+        "clean": "rimraf \"./dist\"",
+        "eslint": "eslint --ext .js,.jsx src",
+        "dll": "better-npm-run dll",
+        "start":"better-npm-run start"
+    },
+    "betterScripts": {
+        "start": {
+            "command": "better-npm-run dll && better-npm-run dev"
+        },
+        "remove": {
+            "command": "rimraf dist"
+        },
+        "dll": {
+            "command": "better-npm-run remove && webpack --config webpack.config.dll.js"
+        },
+        "dev": {
+            "command": "\"./node_modules/.bin/webpack-dev-server\" --config webpack.config.js --open --port 9876 --devtool eval --progress --colors --content-base dist --hot"
+        },
+        "build": {
+            "command": "better-npm-run rm && \"./node_modules/.bin/webpack\" --config \"./dev-config/webpack.config.js\"",
+            "env": {
+                "NODE_ENV": "production"
+            }
+        }
     }
-  }
 }
