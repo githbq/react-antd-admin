@@ -21,6 +21,10 @@
         <link rel="shorticon icon" type="image/x-icon" href="<%= htmlWebpackPlugin.options.favIcon %>">
         <% } %>
             <script src="vendor.dll.js"></script>
+            <!-- 是否是开发环境? -->
+            <% if (htmlWebpackPlugin.options.__DEV__) { %>
+                <script src="http://localhost:<%=htmlWebpackPlugin.options.port %>/webpack-dev-server.js"></script>
+                <% } %>
 </body>
 
 </html>

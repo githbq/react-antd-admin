@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const globalConfig = require('./globalConfig');
 const path = require('path');
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./paths');
+const devServer = require('./devServer');
 let chunks = ['dev', 'index'];
 module.exports = [
     new webpack.HotModuleReplacementPlugin(),
@@ -27,7 +28,9 @@ module.exports = [
         inject: 'body',
         chunks, //选定需要插入的chunk名,
         title: globalConfig.name,
-        // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
+        __DEV__: __DEV__,
+        port: devServer.port,
+            // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
         favIcon: globalConfig.favicon,
         chunksSortMode: function(a, b) {
             return sortChunk(chunks, a.names[0], b.names[0]);
