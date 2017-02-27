@@ -6,11 +6,7 @@
   module.exports = {
       devtool: 'eval-source-map',
       devServer: configs.devServer,
-      entry: {
-          dev: [ 
-              `webpack-dev-server/client?http://0.0.0.0:${configs.devServer.port}`, // WebpackDevServer host and port
-              'webpack/hot/only-dev-server'
-          ],
+      entry: { 
           index: './src/index',
       },
       output: { // 输出的目录和文件名

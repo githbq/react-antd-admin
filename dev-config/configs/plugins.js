@@ -5,10 +5,10 @@ const globalConfig = require('./globalConfig');
 const path = require('path');
 const { TEMPLATE_PATH, PUBLIC_PATH, ROOT_PATH, APP_PATH, BUILD_PATH, NODE_ENV, __DEV__ } = require('./paths');
 const devServer = require('./devServer');
-let chunks = ['dev', 'index'];
+let chunks = ['index'];
 module.exports = [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DllReferencePlugin({
         context: ROOT_PATH,
         /**
@@ -30,21 +30,21 @@ module.exports = [
         title: globalConfig.name,
         __DEV__: __DEV__,
         port: devServer.port,
-            // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
+        // HtmlWebpackPlugin自己有一个favicon属性, 但用起来有点问题, 所以自己重新搞个favIcon属性
         favIcon: globalConfig.favicon,
         chunksSortMode: function(a, b) {
             return sortChunk(chunks, a.names[0], b.names[0]);
         }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: {
-            warnings: true
-        }
-    }),
-    new webpack.LoaderOptionsPlugin({
-        minimize: true
-    })
+    // new webpack.optimize.UglifyJsPlugin({
+    //     sourceMap: true,
+    //     compress: {
+    //         warnings: true
+    //     }
+    // }),
+    // new webpack.LoaderOptionsPlugin({
+    //     minimize: true
+    // })
 ];
 
 function sortChunk(arr, nameA, nameB) {

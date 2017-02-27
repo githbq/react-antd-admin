@@ -81,6 +81,12 @@
             "command": "webpack --config \"./dev-config/webpack.config.dll.js\" --progress --colors"
         },
         "dev": {
+            "command": "\"./node_modules/.bin/webpack-dev-server\" --config \"./dev-config/webpack.config.js\" --progress --colors --devtool eval--progress--colors  --hot ",
+            "env": {
+                "NODE_ENV": "development"
+            }
+        },
+        "dev2": {
             "command": "\"./node_modules/.bin/webpack-dev-server\" --config \"./dev-config/webpack.config.js\" --progress --colors ",
             "env": {
                 "NODE_ENV": "development"
