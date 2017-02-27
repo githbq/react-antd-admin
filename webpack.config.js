@@ -1,5 +1,5 @@
  const webpack = require('webpack');
- const globalConfig = require('./src/config.js');
+ const globalConfig = require('./src/config');
  const path = require('path');
  const HtmlWebpackPlugin = require('html-webpack-plugin');
  const paths = require('./paths');
@@ -24,10 +24,10 @@
      devtool: 'eval-source-map',
 
      entry: [
-         'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+         'webpack-dev-server/client?http://0.0.0.0:9876', // WebpackDevServer host and port
          'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
          'babel-polyfill', // 可以使用完整的ES6特性, 大概增加100KB
-         './src/index.js', // 编译的入口
+         './src/index', // 编译的入口
      ],
 
      output: { // 输出的目录和文件名
@@ -60,30 +60,35 @@
              //       })
              //     }
              {
+                 test: /\.(js|jsx)$/,
+                 enforce: 'pre',
+                 exclude: /(node_modules)/,
+                 use: [{
+                     loader: 'babel-loader',
+                     options: babelLoaderConfig
+                 }]
+             },
+             {
                  test: /\.jsx$/,
                  exclude: /(node_modules)/,
                  use: [
-                     { loader: 'react-hot-loader' },
-                     {
-                         loader: 'babel-loader',
-                         options: babelLoaderConfig
-                     }
+                     { loader: 'react-hot-loader' }
                  ]
              },
              {
                  test: /\.css$/,
                  use: [
-                     { loader: 'style' },
-                     { loader: 'css' }
+                     { loader: 'style-loader' },
+                     { loader: 'css-loader' }
                  ]
              },
              {
                  test: /\.less$/,
                  use: [
-                     { loader: 'style' },
-                     { loader: 'css' },
+                     { loader: 'style-loader' },
+                     { loader: 'css-loader' },
                      {
-                         loader: 'less',
+                         loader: 'less-loader',
                          options: {
                              sourceMap: true,
                              modifyVars: lessLoaderVars

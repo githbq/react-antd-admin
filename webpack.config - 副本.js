@@ -1,5 +1,5 @@
  const webpack = require('webpack');
- const globalConfig = require('./src/config.js');
+ const globalConfig = require('./src/config');
 
  const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -26,7 +26,7 @@
          'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
          'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
          'babel-polyfill', // 可以使用完整的ES6特性, 大概增加100KB
-         './src/index.js', // 编译的入口
+         './src/index', // 编译的入口
      ],
 
      output: { // 输出的目录和文件名

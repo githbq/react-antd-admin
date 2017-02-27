@@ -15,7 +15,7 @@ import {
   Upload,
   notification
 } from 'antd';
-import globalConfig from 'config.js';
+import globalConfig from 'config';
 import Logger from '../../utils/Logger';
 
 const FormItem = Form.Item;

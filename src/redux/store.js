@@ -1,8 +1,8 @@
 import {applyMiddleware, createStore, compose, combineReducers} from 'redux';
 import createLogger from 'redux-logger';
-import globalConfig from 'config.js';
-import Sidebar from './Sidebar.js';
-import Login from './Login.js';
+import globalConfig from 'config';
+import Sidebar from './Sidebar';
+import Login from './Login';
 
 /* 这个文件用于生成store */
 

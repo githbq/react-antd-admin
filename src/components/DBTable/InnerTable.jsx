@@ -15,7 +15,7 @@ import {
   notification,
   Affix
 } from 'antd';
-import globalConfig from 'config.js';
+import globalConfig from 'config';
 import Logger from '../../utils/Logger';
 import ajax from '../../utils/ajax';
 

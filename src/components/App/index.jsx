@@ -8,10 +8,10 @@ import Sidebar from '../Sidebar';
 import Login from '../Login';
 import Breadcrumb from '../Breadcrumb';
 import './index.less';
-import globalConfig from 'config.js';
+import globalConfig from 'config';
 import ajax from '../../utils/ajax';
 import Logger from '../../utils/Logger';
-import {loginSuccessCreator} from '../../redux/Login.js';
+import {loginSuccessCreator} from '../../redux/Login';
 
 const logger = Logger.getLogger('App');
 

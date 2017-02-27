@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const globalConfig = require('./src/config.js');
+const globalConfig = require('./src/config');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
@@ -29,7 +29,7 @@ module.exports = {
 
   entry: [
     'babel-polyfill',
-    './src/index.js',
+    './src/index',
   ],
 
   output: {

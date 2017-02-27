@@ -1,11 +1,11 @@
 import React from 'react';
 import {message, notification} from 'antd';
 import Error from '../Error';
-import InnerForm from './InnerForm.js';
-import InnerTable from './InnerTable.js';
-import InnerPagination from './InnerPagination.js';
+import InnerForm from './InnerForm';
+import InnerTable from './InnerTable';
+import InnerPagination from './InnerPagination';
 import './index.less';
-import globalConfig from 'config.js';
+import globalConfig from 'config';
 import ajax from '../../utils/ajax';
 import Logger from '../../utils/Logger';
 

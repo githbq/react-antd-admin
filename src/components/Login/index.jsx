@@ -6,7 +6,7 @@ import ajax from '../../utils/ajax';
 import Logger from '../../utils/Logger';
 import {message} from 'antd';
 import './index.less';
-import {loginSuccessCreator} from '../../redux/Login.js';
+import {loginSuccessCreator} from '../../redux/Login';
 
 const logger = Logger.getLogger('Login');
 
