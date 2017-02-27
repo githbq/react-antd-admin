@@ -7,7 +7,7 @@ import './index.less';
 class Hello extends React.PureComponent {
 
   render() {
-    return <div><h1 className="testStyle">Hello, React!</h1></div>;
+    return <div><h1 className="testStyle">Hello, ReactQQQRRR!</h1></div>;
   }
 
 }

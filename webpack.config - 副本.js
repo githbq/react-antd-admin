@@ -1,9 +1,8 @@
  const webpack = require('webpack');
  const globalConfig = require('./src/config.js');
- const path = require('path');
+
  const HtmlWebpackPlugin = require('html-webpack-plugin');
- const paths = require('./paths');
- const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
  // 将babel-loader的配置独立出来, 因为webpack的限制: http://stackoverflow.com/questions/33117136/how-to-add-a-query-to-a-webpack-loader-with-multiple-loaders
  const babelLoaderConfig = {
      presets: ['latest', 'stage-0', 'react'], // 开启ES6、部分ES7、react特性, preset相当于预置的插件集合
@@ -36,68 +35,29 @@
      },
 
      resolve: {
-         modules: [
-             path.join(__dirname, "src"),
-             "node_modules"
-         ],
-         enforceExtension: false,
-         extensions: ['.js', '.jsx'], // require的时候可以直接使用require('file')，不用require('file.js')
+         modulesDirectories: ['node_modules', './src'], // import时到哪些地方去寻找模块
+         extensions: ['', '.js', '.jsx'], // require的时候可以直接使用require('file')，不用require('file.js')
          alias: {
              antdcss: 'antd/dist/antd.min.css', // import时的别名
          },
      },
 
-
      module: {
-         rules: [ // 定义各种loader
-             // {
-             //       test: /.css$/,
-             //      loader: ExtractTextPlugin.extract("style-loader", "css-loader", { publicPath: "/dist" })
-             //      use: ExtractTextPlugin.extract({
-             //        fallback: "style-loader",
-             //        use: "css-loader",
-             //       publicPath: "/dist"
-             //       })
-             //     }
+         loaders: [ // 定义各种loader
              {
-                 test: /\.jsx$/,
-                 exclude: /(node_modules)/,
-                 use: [
-                     { loader: 'react-hot-loader' },
-                     {
-                         loader: 'babel-loader',
-                         options: babelLoaderConfig
-                     }
-                 ]
-             },
-             {
+                 test: /\.jsx?$/,
+                 loaders: ['react-hot', 'babel-loader?' + JSON.stringify(babelLoaderConfig)], // react-hot-loader可以不用刷新页面, 如果用普通的dev-server的话会自动刷新页面
+                 exclude: /node_modules/,
+             }, {
                  test: /\.css$/,
-                 use: [
-                     { loader: 'style' },
-                     { loader: 'css' }
-                 ]
-             },
-             {
+                 loader: 'style!css',
+             }, {
                  test: /\.less$/,
-                 use: [
-                     { loader: 'style' },
-                     { loader: 'css' },
-                     {
-                         loader: 'less',
-                         options: {
-                             sourceMap: true,
-                             modifyVars: lessLoaderVars
-                         }
-                     }
-                 ]
+                 loader: 'style!css!' + `less?{"sourceMap":true,"modifyVars":${JSON.stringify(lessLoaderVars)}}`, // 用!去链式调用loader
+             }, {
+                 test: /\.(png|jpg|svg)$/,
+                 loader: 'url?limit=25000', // 图片小于一定值的话转成base64
              },
-             {
-                 test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif|mp4|webm)$/,
-                 use: [{
-                     loader: 'url-loader',
-                     options: { limit: 8192, name: 'assets/imgs/[hash].[ext]' }
-                 }]
-             }
          ],
      },
 
@@ -117,14 +77,5 @@
              // 这个属性也是我自己定义的, dev模式下要加载一些额外的js
              devMode: true,
          }),
-         new webpack.optimize.UglifyJsPlugin({
-             sourceMap: true,
-             compress: {
-                 warnings: true
-             }
-         }),
-         new webpack.LoaderOptionsPlugin({
-             minimize: true
-         })
      ],
  };
