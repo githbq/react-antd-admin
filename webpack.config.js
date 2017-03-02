@@ -18,7 +18,7 @@ const lessLoaderVars = {
 };
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'source-map',
 
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
